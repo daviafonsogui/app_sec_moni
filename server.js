@@ -12,7 +12,5 @@ app.use('', auth, privateRoutes)
 
 const port = process.env.PORT || 3000
 
-// usuario dagalphonse
-// senha XExabl2tBpx9UjlE
-// mongodb+srv://dagalphonse:XExabl2tBpx9UjlE@appdatab.8v4l0oo.mongodb.net/?retryWrites=true&w=majority&appName=appdatab
+
 app.listen(3000, console.log("Servidor rodando 2"))
