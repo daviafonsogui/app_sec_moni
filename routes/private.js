@@ -29,19 +29,13 @@ router.post('/state_of_detectores', async (req, res)=>{
         })
         // Verifica a existencia do usuario
         if(!user){
-            console.log(userInfo)
             return res.status(404).json({menssage:"Usuario não encontrado"})
         }
 
         // Compara a senha do banco com a que o usuario digitou
-        const isMatch = await bcrypt.compare(userInfo.password, user.password)
 
-        if(!isMatch){
-            return res.status(404).json({menssage:"Senha errada"})
-        }
 
         //verique o estado do detector e a diferença de datas
-        console.log("\n")
         user.detectores.forEach( async (value, index)=>{
             const date_now = new Date()
             const date_of_last_life = value.split(" ")[1]
@@ -66,7 +60,7 @@ router.post('/state_of_detectores', async (req, res)=>{
         
         
 
-        res.status(200).json({menssage:"Listado como vivo"})
+        res.status(200).json({detectoresstates:user.detectores})
 
 
     } catch (err) {
