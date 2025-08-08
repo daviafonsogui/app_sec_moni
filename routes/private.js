@@ -42,7 +42,7 @@ router.post('/state_of_detectores', async (req, res)=>{
 
             const dif = Number.parseInt(date_now.getTime()) - Number.parseInt(date_of_last_life)
 
-            if(dif > 5000){
+            if(dif > 15000){
                 const userDetectores = [...user.detectores]
                 userDetectores[index] = "caido"
                 await prisma.user.update({where:{email:userInfo.email}, data:{detectores:userDetectores}})
@@ -67,5 +67,6 @@ router.post('/state_of_detectores', async (req, res)=>{
         return res.status(500).json({menssage:"Erro interno"})
     }
 })
+
 
 export default router
